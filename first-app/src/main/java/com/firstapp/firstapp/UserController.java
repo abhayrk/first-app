@@ -1,5 +1,7 @@
 package com.firstapp.firstapp;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,9 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.firstapp.model.User;
 import com.firstapp.service.UserService;
-
-import java.util.List;
 
 @CrossOrigin(origins="http://localhost:4200", maxAge=3600)
 @RestController
@@ -25,7 +26,7 @@ public class UserController {
 	
 	@PostMapping
 	public User create(@RequestBody User user) {
-		return userService.createUser(user);
+		return userService.create(user);
 	}
 	
 	@GetMapping(path= {"/id"})
@@ -44,7 +45,7 @@ public class UserController {
 	}
 	
 	@GetMapping
-	public list findAll() {
+	public List findAll() {
 		return userService.findAll();
 	}
 
